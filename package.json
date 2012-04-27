@@ -1,6 +1,6 @@
 { "name"            : "mokolo"
 , "description"     : "Non-Negative Matrix Factorization for JavaScript"
-, "homepage"        : ""
+, "homepage"        : "https://github.com/gustii/mokolo"
 , "author"          : "Gustave Nganso <nganso@gmail.com> "
 , "keywords"        : ["vector", "matrix", "geometry", "math", "features", "extraction"]
 , "version"         : "0.0.1"
