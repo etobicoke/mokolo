@@ -1,0 +1,25 @@
+{ "name"            : "mokolo"
+, "description"     : "Non-Negative Matrix Factorization for JavaScript"
+, "homepage"        : "http://github.mokolo.com"
+, "author"          : "Gustave Nganso <nganso@gmail.com> "
+, "keywords"        : ["vector", "matrix", "geometry", "math", "features", "extraction"]
+, "version"         : "0.0.1"
+, "engines"         : {"node": ">=0.4.0"}
+, "dependencies"    : {"sylvester": ">= 0.0.12"}
+, "main"            : "./lib/mokolo/index.js"
+, "devDependencies" : {"jsclass": ""}
+
+, "scripts"         : {"test": "mocha spec/nmf_spec.js"}
+
+, "bugs"            : "http://github.com/gustii/mokolo/issues"
+
+, "licenses"        : [ { "type"    : "MIT"
+                        , "url"     : "http://www.opensource.org/licenses/mit-license.php"
+                        }
+                      ]
+
+, "repositories"    : [ { "type"    : "git"
+                        , "url"     : ""
+                        }
+                      ]
+}
