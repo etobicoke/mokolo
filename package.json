@@ -1,9 +1,9 @@
 { "name"            : "mokolo"
-, "description"     : "Non-Negative Matrix Factorization for JavaScript"
+, "description"     : "Collection of machine learning algorithms: Non-Negative Matrix Factorization for JavaScript"
 , "homepage"        : "https://github.com/gustii/mokolo"
 , "author"          : "Gustave Nganso <nganso@gmail.com> "
 , "keywords"        : ["vector", "matrix", "geometry", "math", "features", "extraction"]
-, "version"         : "0.0.1"
+, "version"         : "0.0.2"
 , "engines"         : {"node": ">=0.4.0"}
 , "dependencies"    : {"sylvester": ">= 0.0.12"}
 , "main"            : "./lib/mokolo/index.js"

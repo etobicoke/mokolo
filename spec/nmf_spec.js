@@ -22,19 +22,42 @@
 
 var expect = require('expect.js');
 
-var nmf = require('../lib/mokolo').nmf;
-var dif_cost = require('../lib/mokolo/matrix_op/dif_cost.js').dif_cost;
-var fArray = [[29,29],[43,33],[15,25],[40,28],[24,11],[29,29],[37,23],[21,6]];
+var mokolo = require('../lib/mokolo');
+var nmf = new mokolo.NMF();
+var dif_cost = require('../lib/mokolo/util/diff_cost.js').diff_cost;
+var fArray;
+fArray = [
+    [29, 29],
+    [43, 33],
+    [15, 25],
+    [40, 28],
+    [24, 11],
+    [29, 29],
+    [37, 23],
+    [21, 6]
+];
 var $M = require('sylvester').Matrix.create;
 var F = $M(fArray);
 
 describe('Non-Negative Matrix Factorization', function () {
     it('can factorize', function (done) {
-        var factorized = nmf.factorize(F, 2, 100);
-        var WH, dif;
-        WH = factorized[0];
-        dif = dif_cost(F, WH);
-        expect(dif).to.be.lessThan(1e-27);
+        nmf.factorize({
+              matrix      : F
+            , features    : 2
+            , iterations  : 1000
+            , precision   : 1e-10
+        }, function(W, H, WH, diff, iteration, precision){
+            console.log('Weights matrix');
+            console.log(W)
+            console.log('Features matrix');
+            console.log(H);
+            console.log('Multiplied matrix');
+            console.log(WH);
+            console.log(iteration);
+            console.log(diff);
+            diff = dif_cost(F, WH);
+            expect(diff).to.be.lessThan(precision);
+        });
         done();
     });
 });
