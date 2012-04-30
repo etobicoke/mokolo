@@ -45,7 +45,7 @@ describe('Non-Negative Matrix Factorization', function () {
               matrix      : F
             , features    : 2
             , iterations  : 1000
-            , precision   : 1e-10
+            , precision   : 1e-15
         }, function(W, H, WH, diff, iteration, precision){
             console.log('Weights matrix');
             console.log(W)
