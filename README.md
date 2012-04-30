@@ -17,17 +17,17 @@ non-stationary speech denoising and bioinformatics. Learn more on <a href="http:
 ### Prerequisite
 NMF uses extensively <a href="http://sylvester.jcoglan.com/", target="_blank">Sylvester</a>, a vector and matrix math library for JavaScript written 
 by James Coglan.
-If Sylvester is not already installed, npm will do it for you.
+If Sylvester is not already installed, npm will do it for you during mokolo's installation.
 
 ### Initialization
 ```
 var mokolo = require('mokolo'), 
-    factorizer = new mokolo.NMF();
+    nmf = new mokolo.NMF();
 ```
 
 ### Usage
 ```
-factorizer.factorize(options, callback);
+nmf.factorize(options, callback);
 ```
 ##### options
 options is a hash with the following structure.
@@ -41,18 +41,18 @@ options is a hash with the following structure.
 ```
 
 ##### callback
-callback is a JavaScript function taking six (6) parameters
+callback is a function taking six (6) parameters
 
 ```
-callback(W, H, WH, dif, precision, iter){
+callback(W, H, WH, diff, iter, precision){
 }
 ```
-* `W` Computed Weights matrrix
-* `H` Computed Features matrix
-* `WH` multiplication of computed matrices W and H
-* `diff` Cost difference between `M` and `WH`
-* `precision` same as above  
-* `iter` number of iterations needed to get `WH` close enough to `M`
+* `W` - Computed Weights matrrix
+* `H` - Computed Features matrix
+* `WH` - multiplication of computed matrices W and H
+* `diff` - Difference between `M` and `WH` 
+* `iter` - number of iterations needed to get `WH` close enough to `M`
+* `precision` - same as above 
 
 ### Example
 Given the following dataset represented by an array of arrays 
@@ -70,14 +70,34 @@ dArray = [
 ];
 
 ```
-Using Sylvester a matrix can be generated
+Using Sylvester a matrix can be generated from the array above.
 
 ```
 var $M = require('sylvester').Matrix.create;
-
+var D = $M(dArray);
+```
+Now factorization can start.
+```
+nmf.factorize({
+        matrix: D
+       ,features: 2
+       ,iterations: 1000
+       ,precision: 1e-10
+    }, 
+    function(W, H, WH, diff, iter, precision){
+        console.log('Weights matrix');
+        console.log(W)
+        console.log('Features matrix');
+        console.log(H);
+        console.log('Computed matrix');
+        console.log(WH);
+        console.log(iter);
+        console.log(diff);
+    }
+);
 ```
 
-
 ## TO DO
-* more test coverage
-* support for recommendations algorithms
+* Set default values to NMF parameters
+* More test coverage
+* Support for more algorithms; e.g. clustering, K-nearest neighbors, etc.
