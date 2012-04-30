@@ -1,6 +1,6 @@
 # mokolo
 
-mokolo is a collection of machine learning algorithms for Node.js. The current release supports only the Non-Negative Matrix Factorization (NMF)
+mokolo intends to become a collection of machine learning algorithms for Node.js. The current release supports only the Non-Negative Matrix Factorization (NMF)
 algorithm; more are coming soon. 
 Feedbacks and contributions are greatly appreciated. 
 
