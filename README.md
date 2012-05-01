@@ -36,7 +36,7 @@ options is a hash with the following structure.
  matrix     : M       // matrix to be factorized; e.g. a matrix object generated from an array using Sylvester  
 ,features   : number  // the dimensions (number x number) of the features matrix to be computed; e.g. 2
 ,iterations : number  // the number of iterations; e.g. 1000 
-,precision  : number  // the position at which the `diff` will be rounded; e.g. 1e-15 
+,precision  : number  // the position at which the `diff` will be rounded to zero; e.g. 1e-15 
 }
 ```
 
